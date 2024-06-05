@@ -6,6 +6,8 @@ import Input from '@/app/_components/input/input';
 import Button from '@/app/_components/button';
 import AuthSocialButton from './AuthSocialButton';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -34,8 +36,17 @@ const AuthForm = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
+    console.log(variant, data);
     if (variant === 'REGISTER') {
       // Register
+      axios
+        .post('/api/register', data)
+        .catch((error) => {
+          toast.error('something went wrong');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
     if (variant === 'LOGIN') {
       // LOGIN
@@ -70,7 +81,7 @@ const AuthForm = () => {
             disabled={isLoading}
           />
           <div>
-            <Button fullWidth disabled={isLoading}>
+            <Button fullWidth disabled={isLoading} type="submit">
               {variant === 'LOGIN' ? 'Sign In' : 'Sign Up'}
             </Button>
           </div>
