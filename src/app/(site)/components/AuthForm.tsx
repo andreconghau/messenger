@@ -8,6 +8,8 @@ import AuthSocialButton from './AuthSocialButton';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
+import { Sign } from 'crypto';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -50,6 +52,21 @@ const AuthForm = () => {
     }
     if (variant === 'LOGIN') {
       // LOGIN
+      signIn('credentials', {
+        ...data,
+        redirect: false,
+      })
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
+          if (callback?.ok && !callback?.error) {
+            toast.success('Logged in!');
+          }
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
