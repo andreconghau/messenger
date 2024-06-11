@@ -25,6 +25,7 @@ const AuthForm = () => {
       console.log(session);
       router.push('/users');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session?.status, router]);
 
   const toggleVariant = useCallback(() => {
