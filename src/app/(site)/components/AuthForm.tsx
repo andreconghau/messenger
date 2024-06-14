@@ -20,9 +20,7 @@ const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (session) console.log(session);
     if (session?.status === 'authenticated') {
-      console.log(session);
       router.push('/users');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,7 +48,6 @@ const AuthForm = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log(variant, data);
     if (variant === 'REGISTER') {
       // Register
       axios
@@ -86,7 +83,6 @@ const AuthForm = () => {
   };
 
   const socialAction = (action: string) => {
-    console.log(action);
     signIn(action, { redirect: false })
       .then((callback) => {
         if (callback?.error) {

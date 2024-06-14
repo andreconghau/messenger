@@ -13,7 +13,6 @@ interface ConversationListProps {
 }
 const ConversationList: React.FC<ConversationListProps> = ({ initialItems }) => {
   const [items, setItems] = useState<FullConversationType[]>(initialItems);
-  console.log(items);
   const router = useRouter();
   const { conversationId, isOpen } = useConversation();
   return (
