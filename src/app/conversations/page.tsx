@@ -7,7 +7,7 @@ import EmptyState from '../_components/EmptyState';
 const ConversationsPage = () => {
   const { isOpen } = useConversation();
   return (
-    <div className={clsx(`h-full lg:block lg:pl-80`, isOpen ? 'block' : 'hidden')}>
+    <div className={clsx('h-full lg:block lg:pl-80', isOpen ? 'block' : 'hidden')}>
       <EmptyState />
     </div>
   );

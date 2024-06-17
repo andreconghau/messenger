@@ -4,8 +4,10 @@ import getCurrentUser from './getCurrentUser';
 const getConversationById = async (conversationId: string) => {
   try {
     const currentUser = await getCurrentUser();
+
     if (!currentUser?.email) return null;
-    const conversations = await prisma.conversation.findMany({
+
+    const conversation = await prisma.conversation.findUnique({
       where: {
         id: conversationId,
       },
@@ -13,7 +15,8 @@ const getConversationById = async (conversationId: string) => {
         users: true,
       },
     });
-    return conversations;
+
+    return conversation;
   } catch (error: any) {
     return null;
   }
