@@ -58,7 +58,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => 
         items-center
         space-x-3
         rounded-lg
-        hover:bg-neutral-100`,
+        p-1 hover:bg-neutral-100`,
         selected ? 'bg-neutral-100' : 'bg-white'
       )}
     >

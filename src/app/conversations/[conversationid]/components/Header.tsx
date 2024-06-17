@@ -1,5 +1,6 @@
 'use client';
 
+import Avatar from '@/app/_components/Avatar';
 import useOtherUser from '@/app/hooks/useOtherUser';
 import { Conversation, User } from '@prisma/client';
 import { useSession } from 'next-auth/react';
@@ -32,6 +33,10 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         >
           <HiChevronLeft size={32} />
         </Link>
+        <Avatar user={otherUser} />
+        <div className="flex flex-col">
+          <div>{conversation.name || otherUser.name}</div>
+        </div>
       </div>
     </div>
   );
