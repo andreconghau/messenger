@@ -3,7 +3,8 @@
 import useConversation from '@/app/hooks/useConversation';
 import axios from 'axios';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { HiPhoto } from 'react-icons/hi2';
+import { HiPaperAirplane, HiPhoto } from 'react-icons/hi2';
+import MessageInput from './MessageInput';
 
 const FormChat = () => {
   const { conversationId } = useConversation();
@@ -17,7 +18,7 @@ const FormChat = () => {
       message: '',
     },
   });
-
+  console.log('conversationId', conversationId);
   const onSubmit: SubmitHandler<FieldValues> = async (data: FieldValues) => {
     setValue('message', '', { shouldValidate: true });
     axios.post(`/api/messages`, {
@@ -27,13 +28,14 @@ const FormChat = () => {
   };
 
   return (
-    <div className="w-full items-center gap-2 border-t bg-white px-4 py-4 lg:gap-4">
+    <div className="flex w-full items-center gap-2 border-t bg-white px-4 py-4 lg:gap-4">
       <HiPhoto size={30} className="text-sky-500" />
-      <form
-        className="flex w-full items-center gap-2 lg:gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-        autoComplete="off"
-      ></form>
+      <form className="flex w-full items-center gap-2 lg:gap-4" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <MessageInput id="message" register={register} errors={errors} required placeholder="write a messsage" />
+        <button type="submit" className="cursor-pointer rounded-full bg-sky-500 p-2 transition hover:bg-sky-600">
+          <HiPaperAirplane size={18} className="text-white" />
+        </button>
+      </form>
     </div>
   );
 };
