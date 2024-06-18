@@ -9,7 +9,7 @@ import { MdOutlineGroupAdd } from 'react-icons/md';
 import ConversationBox from './ConversationBox';
 
 interface ConversationListProps {
-  initialItems: FullConversationType[] | [];
+  initialItems: FullConversationType[];
 }
 const ConversationList: React.FC<ConversationListProps> = ({ initialItems }) => {
   const [items, setItems] = useState<FullConversationType[]>(initialItems);

@@ -58,6 +58,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json(newConversation, { status: 200 });
   } catch (error: any) {
+    console.log(error, 'Error creating conversation');
     return new NextResponse('An error occurred while fetching the current user.', { status: 500 });
   }
 }
