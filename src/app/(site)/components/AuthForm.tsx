@@ -3,13 +3,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import Input from '@/app/_components/input/input';
-import Button from '@/app/_components/button';
 import AuthSocialButton from './AuthSocialButton';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Button from '@/app/_components/button';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
