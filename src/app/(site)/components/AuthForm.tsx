@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import ButtonCustom from '@/app/_components/ButtonCustom';
-import Input from '@/app/_components/input/Input';
+import InputCustom from '@/app/_components/input/Input';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -102,9 +102,9 @@ const AuthForm = () => {
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {variant === 'REGISTER' && (
-            <Input label="Name" id="name" type="text" register={register} errors={errors} disabled={isLoading} />
+            <InputCustom label="Name" id="name" type="text" register={register} errors={errors} disabled={isLoading} />
           )}
-          <Input
+          <InputCustom
             label="Email address"
             id="email"
             type="text"
@@ -112,7 +112,7 @@ const AuthForm = () => {
             errors={errors}
             disabled={isLoading}
           />
-          <Input
+          <InputCustom
             label="Password"
             id="password"
             type="password"

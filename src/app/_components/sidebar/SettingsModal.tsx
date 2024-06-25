@@ -9,7 +9,7 @@ import ButtonCustom from '../ButtonCustom';
 import Modal from '../Modal';
 import { CldUploadButton } from 'next-cloudinary';
 import Image from 'next/image';
-import Input from '../input/Input';
+import InputCustom from '../input/Input';
 interface SettingsModalProps {
   currentUser: User;
   isOpen: boolean;
@@ -93,7 +93,7 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose, currentUser })
                 gap-y-8
               "
             >
-              <Input id="name" disabled={isLoading} label="Name" register={register} required errors={errors} />
+              <InputCustom id="name" disabled={isLoading} label="Name" register={register} required errors={errors} />
               <div>
                 <label
                   className="

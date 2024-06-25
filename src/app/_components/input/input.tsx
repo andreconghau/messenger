@@ -13,7 +13,7 @@ interface InputProps {
   disabled?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ label, id, type, name, required, register, errors, disabled }) => {
+const InputCustom: React.FC<InputProps> = ({ label, id, type, name, required, register, errors, disabled }) => {
   return (
     <div>
       <label htmlFor={id} className="block text-sm font-medium leading-6 text-gray-900">
@@ -40,4 +40,4 @@ const Input: React.FC<InputProps> = ({ label, id, type, name, required, register
     </div>
   );
 };
-export default Input;
+export default InputCustom;

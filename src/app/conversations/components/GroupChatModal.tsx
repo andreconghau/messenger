@@ -2,7 +2,8 @@
 
 import ButtonCustom from '@/app/_components/ButtonCustom';
 import Modal from '@/app/_components/Modal';
-import Input from '@/app/_components/input/Input';
+import InputCustom from '@/app/_components/input/Input';
+
 import Select from '@/app/_components/input/Select';
 import { User } from '@prisma/client';
 import axios from 'axios';
@@ -74,7 +75,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({ isOpen, onClose, users }) => 
                 gap-y-8
               "
             >
-              <Input id="name" label="Name" disabled={isLoading} required register={register} errors={errors} />
+              <InputCustom id="name" label="Name" disabled={isLoading} required register={register} errors={errors} />
               <Select
                 disabled={isLoading}
                 label="Members"
