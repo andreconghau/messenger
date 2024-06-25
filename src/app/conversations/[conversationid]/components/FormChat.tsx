@@ -37,7 +37,11 @@ const FormChat = () => {
 
   return (
     <div className="flex w-full items-center gap-2 border-t bg-white px-4 py-4 lg:gap-4">
-      <CldUploadButton options={{ maxFiles: 1 }} uploadPreset="wrunsptq" onUpload={handleUpload}>
+      <CldUploadButton
+        options={{ maxFiles: 1 }}
+        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET ?? 'wrunsptq'}
+        onUpload={handleUpload}
+      >
         <HiPhoto size={30} className="text-sky-500" />
       </CldUploadButton>
       <form className="flex w-full items-center gap-2 lg:gap-4" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
