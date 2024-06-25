@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import useOtherUser from '@/app/hooks/useOtherUser';
 import { useRouter } from 'next/navigation';
 import Avatar from '@/app/_components/Avatar';
-import AvatarGroup from '@/app/_components/sidebar/AvatarGroup';
+import AvatarGroup from '@/app/_components/AvatarGroup';
 
 interface ConversationBoxProps {
   data: FullConversationType;
