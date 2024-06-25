@@ -10,13 +10,13 @@ const getUsers = async () => {
       orderBy: {
         createdAt: 'desc',
       },
-      //   where: {
-      //     NOT: {
-      //       email: {
-      //         equals: session.user.email,
-      //       },
-      //     },
-      //   },
+      where: {
+        NOT: {
+          email: {
+            equals: session.user.email,
+          },
+        },
+      },
     });
     return users;
   } catch (error: any) {
