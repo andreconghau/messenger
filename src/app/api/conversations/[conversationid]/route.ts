@@ -10,7 +10,6 @@ export async function DELETE(request: Request, { params }: { params: IParams }) 
   try {
     const { conversationid } = params;
     const currentUser = await getCurrentUser();
-    console.log(conversationid, 'conversationid');
     if (!currentUser?.id) {
       return new NextResponse('Unauthorized', { status: 401 });
     }
@@ -30,7 +29,7 @@ export async function DELETE(request: Request, { params }: { params: IParams }) 
     const deletedConversation = await prisma.conversation.deleteMany({
       where: {
         id: conversationid,
-        usersIds: { hasSome: [currentUser.id] },
+        userIds: { hasSome: [currentUser.id] },
       },
     });
 
@@ -42,7 +41,6 @@ export async function DELETE(request: Request, { params }: { params: IParams }) 
 
     return NextResponse.json(deletedConversation);
   } catch (error: any) {
-    console.log(error, 'ERROR_CONVERSATION_DELETE');
     return new NextResponse('Internal Error', { status: 500 });
   }
 }

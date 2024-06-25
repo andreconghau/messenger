@@ -10,7 +10,7 @@ const getConeversations = async () => {
         lastMessageAt: 'desc',
       },
       where: {
-        usersIds: {
+        userIds: {
           has: currentUser.id,
         },
       },

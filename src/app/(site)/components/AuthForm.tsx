@@ -9,7 +9,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Button from '@/app/_components/button';
+import ButtonCustom from '@/app/_components/ButtonCustom';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -121,9 +121,9 @@ const AuthForm = () => {
             disabled={isLoading}
           />
           <div>
-            <Button fullWidth disabled={isLoading} type="submit">
+            <ButtonCustom fullWidth disabled={isLoading} type="submit">
               {variant === 'LOGIN' ? 'Sign In' : 'Sign Up'}
-            </Button>
+            </ButtonCustom>
           </div>
         </form>
         <div className="mt-6">

@@ -12,7 +12,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const ButtonCustom: React.FC<ButtonProps> = ({
   type = 'button',
   fullWidth,
   children,
@@ -40,4 +40,4 @@ const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
-export default Button;
+export default ButtonCustom;

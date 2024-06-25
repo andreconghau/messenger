@@ -19,7 +19,7 @@ const FormChat = () => {
       message: '',
     },
   });
-  console.log('conversationId', conversationId);
+
   const onSubmit: SubmitHandler<FieldValues> = async (data: FieldValues) => {
     setValue('message', '', { shouldValidate: true });
     axios.post(`/api/messages`, {
@@ -29,7 +29,6 @@ const FormChat = () => {
   };
 
   const handleUpload = (result: any) => {
-    console.log('result upload', result);
     axios.post(`/api/messages`, {
       image: result?.info?.secure_url,
       conversationId,

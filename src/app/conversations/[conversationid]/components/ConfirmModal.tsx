@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { FiAlertTriangle } from 'react-icons/fi';
 import Modal from '@/app/_components/Modal';
 import useConversation from '@/app/hooks/useConversation';
-import Button from '@/app/_components/button';
+import ButtonCustom from '@/app/_components/ButtonCustom';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -84,12 +84,12 @@ const ConfirmModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </div>
       </div>
       <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-        <Button disabled={isLoading} danger onClick={onDelete}>
+        <ButtonCustom disabled={isLoading} danger onClick={onDelete}>
           Delete
-        </Button>
-        <Button disabled={isLoading} secondary onClick={onDelete}>
+        </ButtonCustom>
+        <ButtonCustom disabled={isLoading} secondary onClick={onDelete}>
           Cancel
-        </Button>
+        </ButtonCustom>
       </div>
     </Modal>
   );
