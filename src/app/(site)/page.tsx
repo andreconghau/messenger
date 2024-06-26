@@ -10,6 +10,10 @@ export default function Home() {
       </div>
       {/* AuthForm*/}
       <AuthForm />
+      <p className="pt-3 text-center font-light text-neutral-500">
+        This Project was made for personal learning.
+        <br /> Not real project ^^.
+      </p>
     </div>
   );
 }
