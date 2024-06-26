@@ -1,4 +1,4 @@
 export const siteConfig = {
-  name: 'REVU Messnger',
-  description: 'This project side made by myself for Personal Learning',
+  name: 'REVU Messenger',
+  description: 'This Project was made for personal learning. Not real project.',
 };
