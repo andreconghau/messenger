@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/app/libs/prismadb';
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import { pusherServer } from '@/app/libs/pusher';
 
 export async function POST(request: Request) {
   try {
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
     }
     // Create a conversation with the current user and the selected user.
     if (isGroup) {
-      const conversation = await prisma.conversation.create({
+      const newConversation = await prisma.conversation.create({
         data: {
           name,
           isGroup,
@@ -30,7 +31,14 @@ export async function POST(request: Request) {
           users: true,
         },
       });
-      return new NextResponse(JSON.stringify(conversation), { status: 201 });
+
+      newConversation.users.forEach((user) => {
+        if (user.email) {
+          pusherServer.trigger(user.email, 'conversation:new', newConversation);
+        }
+      });
+
+      return new NextResponse(JSON.stringify(newConversation), { status: 201 });
     }
 
     const existingConversations = await prisma.conversation.findMany({
@@ -56,6 +64,12 @@ export async function POST(request: Request) {
         users: true,
       },
     });
+    newConversation.users.map((user) => {
+      if (user.email) {
+        pusherServer.trigger(user.email, 'conversation:new', newConversation);
+      }
+    });
+
     return NextResponse.json(newConversation, { status: 200 });
   } catch (error: any) {
     return new NextResponse('An error occurred while fetching the current user.', { status: 500 });
